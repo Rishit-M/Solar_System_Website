@@ -33,7 +33,7 @@ html{
   .sun .star{
     width: 250px;
     height: 250px;
-    background: url(../img/sun.png) no-repeat;
+    background: url(../Imgages/sun.png) no-repeat;
     background-size: cover;
     border-radius: 250px;
     margin: 0 auto;
@@ -53,7 +53,7 @@ html{
     right: 0;
     top: 0;
     bottom: 0;
-    background: transparent url(../img/shadow.png) 0% 0% no-repeat;
+    background: transparent url(../Imgages/shadow.png) 0% 0% no-repeat;
     background-size: cover;
     border-radius: 100%; 
   }
@@ -67,7 +67,7 @@ html{
   .murcury .planet{
     width: 15px;
     height: 15px;
-    background-image: url(../img/mercury.png);
+    background-image: url(..Imgages/mercury.png);
     animation: anti-spin 12s infinite linear;
   }
   .murcury .shadow{
@@ -84,7 +84,7 @@ html{
   .venus .planet{
     width: 38px;
     height: 38px;
-    background-image: url(../img/venus.png);
+    background-image: url(../Imgages/venus.png);
     animation: anti-spin 15s infinite linear;
   }
   .venus .shadow{
@@ -100,7 +100,7 @@ html{
   .earth .planet{
     width: 40px;
     height: 40px;
-    background-image: url(../img/earth.png);
+    background-image: url(../Imgages/earth.png);
     animation: anti-spin 20s infinite linear;
   }
   .earth .shadow{
@@ -116,7 +116,7 @@ html{
   .mars .planet{
     width: 22px;
     height: 22px;
-    background-image: url(../img/mars.png);
+    background-image: url(.../Imgages/mars.png);
     animation: anti-spin 30s infinite linear;
   }
   .mars .shadow{
@@ -133,7 +133,7 @@ html{
   .jupiter .planet{
     width: 128px;
     height: 128px;
-    background-image: url(../img/jupiter.png);
+    background-image: url(../Imgages/jupiter.png);
     animation: anti-spin 50s infinite linear;
   }
   .jupiter .shadow{
@@ -149,7 +149,7 @@ html{
   .sat .planet{
     width: 30px;
     height: 25px;
-    background-image: url(../img/satt.png);
+    background-image: url(../Imgages/satt.png);
     animation: anti-spin 5s infinite linear;
   }
   .sat .shadow{
