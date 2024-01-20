@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solar System Quiz</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Ruda:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      background: #333; 
+      font-family: "Poppins", sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      color: #fff; 
+    }
+
+    .start-container {
+      text-align: center;
+    }
+
+    .start-container h1 {
+      font-size: 5rem;
+      color: rgb(241, 207, 143);
+      margin-bottom: 20px;
+    }
+
+    .start-container p {
+      font-size: 2.5rem;
+      color: #fff; 
+      margin-bottom: 30px;
+    }
+
+    .start-button {
+      padding: 0.6rem 1.5rem;
+      outline: none;
+      background: rgb(241, 207, 143); 
+      border: 0;
+      cursor: pointer;
+      font-family: inherit;
+      border-radius: 5px;
+      color: #333; 
+      opacity: 0.9;
+      transition: 0.3s ease-in-out;
+      font-size: 1.2rem;
+    }
+
+    .start-button:hover {
+      opacity: 1;
+    }
+
+    .quiz-container {
+      background: #111; /* Dark background for the quiz container */
+      border-radius: 10px;
+      box-shadow: 0 0 10px 2px rgba(100, 100, 100, 0.1);
+      max-width: 600px;
+      width: 100%;
+      display: none;
+    }
+    
+    .quiz-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2rem 2rem;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+    
+    .quiz-header h2 {
+      font-size: 1.5rem;
+      color:rgb(241, 207, 143)
+    }
+    
+    .quiz-header p {
+      background: #444; 
+      padding: 0.4rem 1rem;
+      color: #fff;
+      border-radius: 5px;
+    }
+    
+    .quiz-body {
+      padding: 2rem 2rem;
+    }
+    
+    .quiz-body h2 {
+      padding: 1rem 0;
+      font-size: 2rem;
+      font-weight: 500;
+      text-align: center;
+      margin: 0;
+      color:rgb(241, 207, 143)
+    }
+    
+    .quiz-body ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .quiz-body ul li {
+      margin: 1rem 0;
+      font-size: 1rem;
+      border: 1px solid rgb(241, 207, 143); 
+      padding: 0.7rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    .quiz-body ul li label {
+      cursor: pointer;
+      padding: 0 0.4rem;
+    }
+    
+    .quiz-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    }
+    
+    .quiz-footer button {
+      padding: 0.6rem 1.5rem;
+      outline: none;
+      background: rgb(241, 207, 143); 
+      border: 0;
+      cursor: pointer;
+      font-family: inherit;
+      border-radius: 5px;
+      color: #333; 
+      opacity: 0.9;
+      transition: 0.3s ease-in-out;
+    }
+    
+    .quiz-footer button:hover {
+      opacity: 1;
+    }
+
+    .try-again-btn,
+    .back-to-home-btn {
+      margin: 30px auto; 
+      padding: 0.6rem 1.5rem;
+      background: #333;
+      border: 0;
+      cursor: pointer;
+      font-family: inherit;
+      border-radius: 5px;
+      color: rgb(241, 207, 143); 
+      opacity: 0.9;
+      transition: 0.3s ease-in-out;
+    }
+
+    .try-again-btn:hover,
+    .back-to-home-btn:hover {
+      opacity: 1;
+      background: #555;
+    }
+
+    .try-again-btn:hover {
+      opacity: 1;
+      background: #555;
+    }
+    .divi{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .quiz-result {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 20px;
+  }
+
+  .quiz-result ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .quiz-result li {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #222;
+    color: #fff;
+  }
+
+  .correct {
+    border: 2px solid #4CAF50;
+  }
+
+  .incorrect {
+    border: 2px solid #FF5733;
+  }
+  </style>
+</head>
+<body>
+    <div class="start-container" id="start">
+      <h1>Solar System Quiz</h1>
+      <p>"Harmony of Celestial Bodies"</p>
+      <button class="start-button" onclick="startQuiz()">Start</button>
+    </div>
+
+    <div style="position: absolute;
+    left: 30px;
+    bottom: 30px;">
+    <a href="index.html" style="text-decoration: none; color: white;">
+      <p style="font-size: 32px;">
+      <span class="material-symbols-outlined">
+        arrow_back_ios
+        </span>
+        Back to home
+      </p>
+    </a>
+    </div>
+
+    <div class="quiz-container" id="quiz">
+        <div class="quiz-header">
+          <h2 class="header-txt">Solar System Quiz</h2>
+        </div>
+        <div class="quiz-body">
+          <h2 id="question">Question Text</h2>
+          <ul>
+            <li>
+              <input type="radio" name="answer" id="a" class="answer" />
+              <label for="a" id="a_text">Questions</label>
+            </li>
+            <li>
+              <input type="radio" name="answer" id="b" class="answer" />
+              <label for="b" id="b_text">Questions</label>
+            </li>
+            <li>
+              <input type="radio" name="answer" id="c" class="answer" />
+              <label for="c" id="c_text">Questions</label>
+            </li>
+            <li>
+              <input type="radio" name="answer" id="d" class="answer" />
+              <label for="d" id="d_text">Questions</label>
+            </li>
+          </ul>
+        </div>
+        <div class="quiz-footer">
+          <div class="quiz-details"></div>
+          <button type="button" id="btn">Submit</button>
+        </div>
+    </div>
+
+  <script>
+    "use strict";
+
+    let userAnswers = [];
+
+    const startContainer = document.getElementById("start");
+    const quizContainer = document.getElementById("quiz");
+
+    function startQuiz() {
+      startContainer.style.display = "none";
+      quizContainer.style.display = "block";
+    }
+
+    const quizData = [
+  {
+    question: "What is the primary method of energy generation in the Sun?",
+    a: "Nuclear fission",
+    b: "Nuclear fusion",
+    c: "Solar wind",
+    d: "Gravitational collapse",
+    correct: "b",
+    explanation: "The Sun generates energy through nuclear fusion, where hydrogen atoms combine to form helium, releasing a tremendous amount of energy."
+  },
+  {
+    question: "What role does the Sun's magnetic activity play in the solar system?",
+    a: "Creating planetary atmospheres",
+    b: "Generating solar flares",
+    c: "Influencing cosmic tapestry",
+    d: "Regulating planetary temperatures",
+    correct: "b",
+    explanation: "Correct! The Sun's magnetic activity generates solar flares, which can influence space weather and have various effects on the solar system."
+  },
+  {
+    question: "What is the main purpose of satellites in the solar system?",
+    a: "Providing light",
+    b: "Generating heat",
+    c: "Observing space weather",
+    d: "Regulating planetary orbits",
+    correct: "c",
+    explanation: "Satellites in the solar system are primarily used for observing space weather, collecting data, and studying celestial phenomena."
+  },
+  {
+    question: "How does Mercury's surface reflect its history?",
+    a: "Smooth and featureless",
+    b: "Scarred with craters and rugged terrain",
+    c: "Covered with lush vegetation",
+    d: "Marked by large bodies of water",
+    correct: "b",
+    explanation: "Mercury's surface is scarred with craters and rugged terrain, indicating a history of impacts from space debris."
+  },
+  {
+    question: "Why is Venus considered Earth's 'scorching twin'?",
+    a: "It has a similar size to Earth",
+    b: "It has a thick atmosphere of carbon dioxide",
+    c: "It has a retrograde rotation",
+    d: "It has a runaway greenhouse effect",
+    correct: "d",
+    explanation: "Venus is considered Earth's 'scorching twin' due to its runaway greenhouse effect, resulting in extremely high surface temperatures."
+  },
+  {
+    question: "What makes Earth a unique and special planet in the solar system?",
+    a: "Its proximity to the Sun",
+    b: "Its diverse landscapes and ecosystems",
+    c: "Its lack of an atmosphere",
+    d: "Its extreme temperatures",
+    correct: "b",
+    explanation: "Correct! Earth is unique and special due to its diverse landscapes and ecosystems, supporting a variety of life forms."
+  },
+  {
+    question: "Which planet in the solar system is known for having the tallest volcano, Olympus Mons?",
+    a: "Earth",
+    b: "Mars",
+    c: "Jupiter",
+    d: "Saturn",
+    correct: "b",
+    explanation: "Mars is known for having the tallest volcano, Olympus Mons, which is the largest volcano in the solar system."
+  },
+  {
+    question: "What is Jupiter's most iconic feature?",
+    a: "Its spectacular ring system",
+    b: "The Great Red Spot",
+    c: "Its fast rotation",
+    d: "Its unique tilt",
+    correct: "b",
+    explanation: "Jupiter's most iconic feature is the Great Red Spot, a massive storm that has been raging for centuries."
+  },
+  {
+    question: "What gives Saturn its enchanting appearance?",
+    a: "Colorful cloud bands",
+    b: "A system of icy particles and debris rings",
+    c: "Frequent dust storms",
+    d: "Active weather patterns",
+    correct: "b",
+    explanation: "Saturn's enchanting appearance is due to its system of icy particles and debris rings, which make it a unique and stunning planet."
+  },
+  {
+    question: "What sets Uranus apart from other planets in the solar system?",
+    a: "Its vibrant blue-green hue",
+    b: "Its prominent ring system",
+    c: "Its retrograde rotation",
+    d: "Its massive size",
+    correct: "c",
+    explanation: "Uranus is unique in the solar system due to its retrograde rotation, where it rotates on its side compared to other planets."
+  }
+];
+
+
+    const quiz = document.querySelector(".quiz-body");
+    const answerEl = document.querySelectorAll(".answer");
+    const questionEl = document.getElementById("question");
+    const footerEl = document.querySelector(".quiz-footer");
+    const quizDetailEl = document.querySelector(".quiz-details");
+    const liEl = document.querySelector("ul li");
+
+    const a_txt = document.getElementById("a_text");
+    const b_txt = document.getElementById("b_text");
+    const c_txt = document.getElementById("c_text");
+    const d_txt = document.getElementById("d_text");
+    const btnSubmit = document.getElementById("btn");
+
+    let currentQuiz = 0;
+    let score = 0;
+
+    loadQuiz();
+
+    function loadQuiz() {
+     deselectAnswers();
+     const currentQuizData = quizData[currentQuiz];
+     questionEl.innerText = currentQuizData.question;
+     a_txt.innerText = currentQuizData.a;
+     b_txt.innerText = currentQuizData.b;
+     c_txt.innerText = currentQuizData.c;
+     d_txt.innerText = currentQuizData.d;
+     quizDetailEl.innerHTML = `<p>${currentQuiz + 1} of ${quizData.length}</p>`;
+    }
+
+    function deselectAnswers() {
+     answerEl.forEach((answerEl) => {
+      answerEl.checked = false;
+     });
+    }
+
+    function getSelected() {
+  let answer;
+  answerEl.forEach((answerEls) => {
+    if (answerEls.checked) {
+      answer = answerEls.id;
+      userAnswers[currentQuiz] = answer; // Store the user's answer for the current question
+    }
+  });
+  return answer;
+}
+
+    btnSubmit.addEventListener("click", function () {
+  const answers = getSelected();
+
+  if (answers) {
+    if (answers === quizData[currentQuiz].correct.toLowerCase()) {
+      score++;
+    }
+
+    currentQuiz++;  // Increment after checking the answer
+
+    if (currentQuiz < quizData.length) {
+      loadQuiz();
+    } else {
+      showResult();
+    }
+  }
+});
+
+
+function showResult() {
+  let resultHTML = `<h2>You answered ${score}/${quizData.length} questions correctly</h2><div class="quiz-result"><ul>`;
+
+  quizData.forEach((question, index) => {
+    const userAnswer = userAnswers[index]; // Retrieve the user's answer for the current question
+    const isCorrect = userAnswer && userAnswer.toLowerCase() === question.correct.toLowerCase();
+    const resultClass = isCorrect ? "correct" : "incorrect";
+
+    // Display the common explanation for each question
+    const explanation = `Explanation: ${question.explanation}`;
+
+    resultHTML += `<li class="${resultClass}">
+      ${index + 1}. ${question.question} - Your answer: ${userAnswer ? question[userAnswer.toLowerCase()] : 'Not answered'} (${isCorrect ? 'Correct' : 'Incorrect'})
+
+      <br>${explanation}
+    </li>`;
+  });
+
+  resultHTML += `</ul></div><div class="divi"><button type="button" onclick="location.reload()" class="try-again-btn">Try Again</button></div>`;
+
+  quiz.innerHTML = resultHTML;
+  footerEl.style.display = "none";
+}
+
+    function nextQuestion() {
+  currentQuiz++;
+
+  if (currentQuiz < quizData.length) {
+    loadQuiz();
+  } else {
+    let resultHTML = `<h2>You answered ${score}/${quizData.length} questions correctly</h2><div class="quiz-result"><ul>`;
+
+      quizData.forEach((question, index) => {
+  const userAnswer = getSelectedAnswer(index);  // Pass the index of the current question
+  const isCorrect = userAnswer.toLowerCase() === question.correct.toLowerCase();
+  const resultClass = isCorrect ? "correct" : "incorrect";
+
+  // Display the common explanation for each question
+  const explanation = `Explanation: ${question.explanation}`;
+
+  resultHTML += `<li class="${resultClass}">
+    ${index + 1}. ${question.question} - Your answer: ${question[userAnswer.toLowerCase()]} (${isCorrect ? 'Correct' : 'Incorrect'})
+    <br>${explanation}
+  </li>`;
+});
+
+resultHTML += `</ul></div><div class="divi"><button type="button" onclick="location.reload()" class="try-again-btn">Try Again</button></div>`;
+
+quiz.innerHTML = resultHTML;
+footerEl.style.display = "none";
+}
+    }
+
+function getSelectedAnswer(index) {
+  const answer = getSelected();
+  return answer ? answer.toLowerCase() : "Not answered";
+}
+
+</script>
+  </script>
+</body>
+</html>
