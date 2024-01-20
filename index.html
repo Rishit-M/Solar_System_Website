@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Solar System</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <h1>Solar System</h1>
+        <h3>"Harmony of Celestial Bodies"</h3>
+        <div class="wrapper">
+            <div class="sun">
+                <div class="star"><a href="learn_more.html#sun" target="_blank">Sun</a></div>
+            </div>
+            
+            <div class="murcury">
+                <a href="learn_more.html#mercury" target="_blank">Mercury</a>
+                <div class="planet">
+                    <div class="shadow"></div>
+                </div>
+            </div>
+            <div class="venus">
+                <a href="learn_more.html#venus" target="_blank">Venus</a>
+                <div class="planet">
+                    <div class="shadow"></div>
+                </div>
+            </div>
+            <div class="earth">
+                <a href="learn_more.html#earth" target="_blank">Earth</a>
+                <div class="planet">
+                    <div class="shadow"></div>
+                </div>
+            </div>
+            <div class="mars">
+                <a href="learn_more.html#mars" target="_blank">Mars</a>
+                <div class="planet">
+                    <div class="shadow"></div>
+                </div>
+            </div>
+            <div class="jupiter">
+                <a href="learn_more.html#jupiter" target="_blank">Jupiter</a>
+                <div class="planet">
+                    <div class="shadow"></div>
+                </div>
+            </div>
+            <div class="sat">
+                <a href="learn_more.html#satellite" target="_blank">Satellite</a>
+                <div class="planet">
+                    <div the="shadow"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+<style>
+    h1{
+		color: rgb(241, 207, 143);
+		text-align: center;
+		font-family: cursive;
+	}
+	.links{
+		position: absolute;
+		bottom: 20px;
+		right: 20px;
+	}
+	.links a{
+		margin-left: 10px;
+		color: wheat;
+		letter-spacing: 1px;
+		font-size: 18px;
+		text-decoration: none;
+	}
+	.links a:hover{
+		color: rgb(241, 207, 143);
+		text-decoration: underline;
+	}
+	a{
+		color: wheat;
+		font-family: cursive;
+		text-decoration: none;
+	}
+	h3{
+		color: wheat;
+		font-family: cursive;
+		text-align: center;
+	}
+	a:hover{
+		text-decoration: underline;
+		color: rgb(241, 207, 143);;
+	}
+
+	.animate-charcter
+{
+   text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    rgb(245, 222, 179) 0%,
+	rgb(207, 164, 85) 29%,
+    rgb(155, 109, 24) 67%,
+    rgb(96, 69, 18) 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+      font-size: 190px;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+
+</style>
+
+<div class="links">
+    <a href="index.html">Reload</a>
+	<a href="other_planets.html" target="_blank">Other Planets</a>
+    <a href="learn_more.html" class="animate-charcter" target="_blank">Learn More!</a>
+    <a href="quiz.html" class="animate-charcter" target="_blank">Play a Quiz!</a>
+</div>
